@@ -1,0 +1,26 @@
+﻿<controls:MetroWindow x:Class="SG_Studio.StartupWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      Title="Open Project"
+                      Height="200"
+                      Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="10,0,10,10" Height="149" VerticalAlignment="Bottom" Grid.Column="0" Click="NewProject">
+            <StackPanel>
+                <Image Source="../Media/appbar.page.new.png" Height="60" />
+                <TextBlock>New Project</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Margin="10,0,10,10" Height="149" VerticalAlignment="Bottom" Grid.Column="1" Click="OpenProject">
+            <StackPanel>
+                <Image Source="../Media/appbar.folder.open.png" Height="60" />
+                <TextBlock>Open Project</TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</controls:MetroWindow>

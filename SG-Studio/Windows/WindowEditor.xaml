@@ -1,0 +1,47 @@
+﻿<controls:MetroWindow x:Class="SG_Studio.Editor"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      Title="Street Gears Studio"
+                      Height="720"
+                      Width="1280" WindowStartupLocation="CenterScreen" Loaded="MetroWindow_Loaded">
+    <Grid>
+        <controls:MetroTabControl x:Name="metroTabControl" Margin="0">
+            <TabItem Header="Project">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="GUI">
+                <Grid Background="#FFE5E5E5" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="71*"/>
+                        <ColumnDefinition Width="247*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="listBox" HorizontalAlignment="Left" Margin="10,10,0,10" Width="264" SelectionChanged="listBox_SelectionChanged"/>
+                    <TextBox x:Name="textBox" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="" Height="222" VerticalAlignment="Bottom"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="10,10,10,237">
+                        <Canvas Width="{Binding ActualWidth, ElementName=image}" Height="{Binding ActualHeight, ElementName=image}" >
+                            <Canvas.Background>
+                                <VisualBrush  >
+                                    <VisualBrush.Visual>
+                                        <Image x:Name="image" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Canvas.Background>
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Strings">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Maps">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <GroupBox x:Name="groupBox" Header="GroupBox" Height="270" Margin="0" Width="302"/>
+        </controls:MetroTabControl>
+
+        <!-- your content -->
+
+
+    </Grid>
+</controls:MetroWindow>
