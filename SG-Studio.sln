@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SG-Studio", "SG-Studio\SG-S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SG_ResManagerLib", "SG_ResManager\SG_ResManagerLib.csproj", "{1EFEE1BA-54CF-4B83-9413-5F7D3AB2FDD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargaImage", "..\..\..\..\Desktop\TargaImage_src-noexe\TargaImage.csproj", "{56F4BD87-2404-4263-80D5-6FA2161EB0A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargaImage", "TargaImage\TargaImage.csproj", "{56F4BD87-2404-4263-80D5-6FA2161EB0A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
