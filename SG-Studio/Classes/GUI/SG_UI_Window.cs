@@ -66,6 +66,9 @@ namespace SG_Studio.Classes.GUI
                         uie.Spr = keyVal[1].Replace(";", "");
                     if (keyVal[0] == "ani")
                         uie.Ani = keyVal[1].Replace(";", "");
+                    if (keyVal[0] == "caption")
+                        uie.Caption = keyVal[1].Replace(";", "");
+
                     if (keyVal[0] == "rect")
                     {
                         var rect = keyVal[1].Replace(";", "").Split(',');

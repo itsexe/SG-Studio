@@ -53,6 +53,7 @@ namespace SG_Studio.Classes.GUI
                     {
                         Graphics drawing = Graphics.FromImage(img);
                         drawing.DrawImage(GetImage(SgStudioProject.spr[Spr.ToLower()].imgList[Ani.ToLower()].files), Rect.X, Rect.Y);
+
                     }
                 }
                 return img;
@@ -66,6 +67,11 @@ namespace SG_Studio.Classes.GUI
         /// <returns></returns>
         private Image GetImage(List<Tuple<String, Size, int>> imgList)
         {
+            if (Rect.Width == -1)
+                Rect = new Rectangle(Rect.X, Rect.Y, ChildOf.Rect.Width, Rect.Height);
+            if (Rect.Height == -1)
+                Rect = new Rectangle(Rect.X, Rect.Y, Rect.Width, ChildOf.Rect.Height);
+
             Size size = new Size((Rect.Width - Rect.X),(Rect.Height - Rect.Y));
             Image img = new Bitmap(size.Width, size.Height);
             if (imgList.Count() >= 3)
@@ -104,7 +110,17 @@ namespace SG_Studio.Classes.GUI
                         drawing.DrawImage(rightbottom, new Point(size.Width  - right.Width, size.Height - right.Height));
 
                     }
+                    //draw caption
+                    if(Caption != "")
+                    {
+                        StringFormat sf = new StringFormat();
+                        sf.LineAlignment = StringAlignment.Center;
+                        sf.Alignment = StringAlignment.Center;
+                        drawing.DrawString(Caption, new Font(FontFamily.GenericSansSerif,8), new SolidBrush(Color.Black), new Rectangle(0,0,size.Width, size.Height), sf);
+                    }
                 }
+                
+                
                 //img.Save(System.IO.Path.GetTempFileName() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 System.Diagnostics.Debug.WriteLine("Rendering " + imgList[0].Item1);
             }
