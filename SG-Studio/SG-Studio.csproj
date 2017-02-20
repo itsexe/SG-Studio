@@ -165,7 +165,7 @@
     <Resource Include="Media\appbar.folder.open.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Desktop\TargaImage_src-noexe\TargaImage.csproj">
+    <ProjectReference Include="..\TargaImage\TargaImage.csproj">
       <Project>{56f4bd87-2404-4263-80d5-6fa2161eb0a4}</Project>
       <Name>TargaImage</Name>
     </ProjectReference>

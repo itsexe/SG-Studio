@@ -1,7 +1,8 @@
-﻿<controls:MetroWindow x:Class="SG_Studio.Editor"
+﻿<controls:MetroWindow
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:GUI="clr-namespace:SG_Studio.Classes.GUI" x:Class="SG_Studio.Editor"
                       Title="Street Gears Studio"
                       Height="720"
                       Width="1280" WindowStartupLocation="CenterScreen" Loaded="MetroWindow_Loaded">
@@ -17,9 +18,8 @@
                         <ColumnDefinition Width="247*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="listBox" HorizontalAlignment="Left" Margin="10,10,0,10" Width="264" SelectionChanged="listBox_SelectionChanged"/>
-                    <TextBox x:Name="textBox" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="" Height="222" VerticalAlignment="Bottom"/>
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="10,10,10,237">
-                        <Canvas Width="{Binding ActualWidth, ElementName=image}" Height="{Binding ActualHeight, ElementName=image}" >
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="10,10,10,169" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderThickness="2">
+                        <Canvas Width="{Binding ActualWidth, ElementName=image}" Height="{Binding ActualHeight, ElementName=image}" Margin="2">
                             <Canvas.Background>
                                 <VisualBrush  >
                                     <VisualBrush.Visual>
@@ -29,6 +29,16 @@
                             </Canvas.Background>
                         </Canvas>
                     </ScrollViewer>
+                    <DataGrid x:Name="dataGrid" Grid.Column="1" Margin="10,0,10,10" Height="154" VerticalAlignment="Bottom" ItemsSource="{Binding Mode=OneWay}" GridLinesVisibility="All" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding elementType}" ClipboardContentBinding="{x:Null}" Header="Element Type"/>
+                            <DataGridTextColumn Binding="{Binding ElementID}" ClipboardContentBinding="{x:Null}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding Caption}" ClipboardContentBinding="{x:Null}" Header="Caption"/>
+                        </DataGrid.Columns>
+                        <DataGrid.DataContext>
+                            <GUI:SG_UI_Element/>
+                        </DataGrid.DataContext>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Strings">

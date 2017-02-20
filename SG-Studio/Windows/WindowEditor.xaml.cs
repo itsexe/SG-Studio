@@ -32,8 +32,8 @@ namespace SG_Studio
                     currentWindow = (Classes.GUI.SG_UI_Window)item;
                 }
             }
-            textBox.Text = string.Join(Environment.NewLine, currentWindow.Code);
             RenderWindow();
+            dataGrid.ItemsSource = currentWindow.Elements;
         }
         private void RenderWindow()
         {

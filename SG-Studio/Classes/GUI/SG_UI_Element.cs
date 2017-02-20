@@ -65,7 +65,7 @@ namespace SG_Studio.Classes.GUI
         /// </summary>
         /// <param name="imgList"></param>
         /// <returns></returns>
-        private Image GetImage(List<Tuple<String, Size, int>> imgList)
+        private Image GetImage(List<SPR_Image_Part> imgList)
         {
             if (Rect.Width == -1)
                 Rect = new Rectangle(Rect.X, Rect.Y, ChildOf.Rect.Width, Rect.Height);
@@ -76,9 +76,9 @@ namespace SG_Studio.Classes.GUI
             Image img = new Bitmap(size.Width, size.Height);
             if (imgList.Count() >= 3)
             {
-                Image left = GetImageByFilename(imgList[0].Item1);
-                Image middle = GetImageByFilename(imgList[1].Item1);
-                Image right = GetImageByFilename(imgList[2].Item1);
+                Image left = imgList[0].GetImagePart();
+                Image middle = imgList[1].GetImagePart();
+                Image right = imgList[2].GetImagePart();
                 using (Graphics drawing = Graphics.FromImage(img))
                 {
                     //Draw left
@@ -91,12 +91,12 @@ namespace SG_Studio.Classes.GUI
                     //Fill height
                     if (left.Height < size.Height && imgList.Count() >= 9)
                     {
-                        Image leftmiddle = GetImageByFilename(imgList[3].Item1);
-                        Image middlemiddle = GetImageByFilename(imgList[4].Item1);
-                        Image rightmiddle = GetImageByFilename(imgList[5].Item1);
-                        Image leftbottom = GetImageByFilename(imgList[6].Item1);
-                        Image middlebottom = GetImageByFilename(imgList[7].Item1);
-                        Image rightbottom = GetImageByFilename(imgList[8].Item1);
+                        Image leftmiddle = imgList[3].GetImagePart();
+                        Image middlemiddle = imgList[4].GetImagePart();
+                        Image rightmiddle = imgList[5].GetImagePart();
+                        Image leftbottom = imgList[6].GetImagePart();
+                        Image middlebottom = imgList[7].GetImagePart();
+                        Image rightbottom = imgList[8].GetImagePart();
 
                         //Draw left
                         drawing.DrawImage(leftmiddle, new Rectangle(0,left.Height, leftmiddle.Width, size.Height - left.Height - leftbottom.Height));
@@ -122,44 +122,16 @@ namespace SG_Studio.Classes.GUI
                 
                 
                 //img.Save(System.IO.Path.GetTempFileName() + ".png", System.Drawing.Imaging.ImageFormat.Png);
-                System.Diagnostics.Debug.WriteLine("Rendering " + imgList[0].Item1);
+                System.Diagnostics.Debug.WriteLine("Rendering " + imgList[0].ImageFileName);
             }
             else
             {
                 using (Graphics drawing = Graphics.FromImage(img))
                 {
-                    drawing.DrawImage(GetImageByFilename(imgList[0].Item1), size.Width, size.Height);
+                    drawing.DrawImage(imgList[0].GetImagePart(), size.Width, size.Height);
                 }
             }
             return img;
-        }
-        /// <summary>
-        /// Gets the image file from the hard drive 
-        /// </summary>
-        /// <param name="filename"></param>
-        /// <returns></returns>
-        private Image GetImageByFilename(string filename)
-        {
-            if (filename.EndsWith("dds"))
-            {
-                if (System.IO.File.Exists(SgStudioProject.rootDir + "\\dds\\" + filename))
-                {
-                    return new KUtility.DDSImage(System.IO.File.ReadAllBytes(SgStudioProject.rootDir + "\\dds\\" + filename)).images[0];
-                }
-            }
-            else if (filename.EndsWith("tga"))
-            {
-                if (System.IO.File.Exists(string.Format("{0}\\tga\\{1}({2}).tga", SgStudioProject.rootDir, filename.Replace(".tga", ""), SgStudioProject.locale)))
-                {
-                    return Paloma.TargaImage.LoadTargaImage(SgStudioProject.rootDir + "\\tga\\" + filename.Replace(".tga", "") + "(cp1141)" + ".tga");
-                }
-                else if (System.IO.File.Exists(SgStudioProject.rootDir + "\\tga\\" + filename))
-                {
-                    return Paloma.TargaImage.LoadTargaImage(SgStudioProject.rootDir + "\\tga\\" + filename);
-                }
-            }
-            System.Diagnostics.Debug.WriteLine("File not found " + filename);
-            return new Bitmap(1,1);
         }
     }
 }

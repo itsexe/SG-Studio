@@ -41,7 +41,6 @@ namespace KUtility {
 
 		public int dwMagic;
 		private DDS_HEADER header = new DDS_HEADER();
-		private DDS_HEADER_DXT10 header10 = null;//If the DDS_PIXELFORMAT dwFlags is set to DDPF_FOURCC and dwFourCC is set to "DX10"
 		public byte[] bdata;//pointer to an array of bytes that contains the main surface data. 
 		public byte[] bdata2;//pointer to an array of bytes that contains the remaining surfaces such as; mipmap levels, faces in a cube map, depths in a volume texture.
 
@@ -369,13 +368,6 @@ namespace KUtility {
 		public int dwReserved2;
 	}
 
-	class DDS_HEADER_DXT10 {
-		public DXGI_FORMAT dxgiFormat;
-		public D3D10_RESOURCE_DIMENSION resourceDimension;
-		public uint miscFlag;
-		public uint arraySize;
-		public uint reserved;
-	}
 
 	class DDS_PIXELFORMAT {
 		public int dwSize;

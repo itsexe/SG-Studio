@@ -30,7 +30,7 @@ namespace SG_Studio.Classes.GUI
                     currentline++;
                     int uk = int.Parse(lines[currentline]);
                     currentline++;
-                    currentSpr.files.Add(new Tuple<string, Size, int>(sprName,imgSize,uk));
+                    currentSpr.files.Add(new SPR_Image_Part(sprName,imgSize,uk));
                 }
                 imgList.Add(currentSpr.imageName, currentSpr);
             }
